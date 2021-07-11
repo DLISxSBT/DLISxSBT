@@ -7,6 +7,47 @@
 <title>PWA Sample</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
+<style>
+.diet_form {
+    background: #eaf4ff;
+    padding: 10px 30px;
+}
+form dl dt {
+    width: 200px;
+    height: 40px;
+    padding: 10px 0;
+    line-height: 40px;
+    float: left;
+}
+form dl dd {
+    padding: 10px 0;
+    margin: 0;
+}
+.box {
+    box-sizing: border-box;
+    width: 150px !important;
+    height: 40px !important;
+    margin: 0 !important;
+    padding: 0 10px !important;
+}
+.calc-btn {
+    width: 80px;
+    height: 30px;
+    border: 1px solid #333;
+}
+.calc-btn:hover {
+    cursor: pointer;
+}
+</style>
+<script>
+    function calc(weight, bfp) {
+        const lean_value = document.getElementById('lean').value = Math.round((weight - (weight * (bfp / 100))) * 100) / 100;
+        const cal_value = document.getElementById('cal').value = Math.round(lean_value * 40);
+        const protein_value = document.getElementById('protein').value = Math.round(lean_value * 2);
+        const fat_value = document.getElementById('fat').value = Math.round(lean_value * 0.9);
+        const carbo_value = document.getElementById('carbo').value = Math.round((cal_value - (protein_value * 4) - (fat_value * 9)) / 4);
+    }
+</script>
 <body>
 <form class="diet_form">
     <dl>
